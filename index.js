@@ -274,7 +274,7 @@ const kubernetesClient = async (config = {}) => {
     paths
       .filter(path => startsWith(path, '/api'))
       .map(async path => {
-        const data = await resourceClient(path).list()
+        const data = await resourceClient(path).list().catch(console.error)
         return { ...data, path }
       }
   ))
